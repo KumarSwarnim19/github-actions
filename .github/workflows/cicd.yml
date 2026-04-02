@@ -10,8 +10,8 @@ on:
         type: choice
         options:
           - dev
-            prod
-            staging
+          - prod
+          - staging
 
 jobs:
   code:
