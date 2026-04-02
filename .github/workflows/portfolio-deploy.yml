@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 permissions:
   pages: write
   id-token: write
@@ -19,7 +20,7 @@ jobs:
 
       - name: Setup Github Pages
         uses: actions/configure-pages@v4
-        
+
       - name: Upload static files
         uses: actions/upload-pages-artifact@v4
 
