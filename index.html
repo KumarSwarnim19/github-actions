@@ -2,33 +2,261 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumar Swarnim | DevOps & SRE Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0c10;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(157, 80, 187, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Content Sections */
+        section {
+            max-width: 900px;
+            margin: 100px auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--glass-border);
+        }
+
+        /* Glass Card Design */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-family: 'Fira Code', monospace;
+            margin: 5px 5px 0 0;
+        }
+
+        /* Contact Section */
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        @media (max-width: 768px) {
+            nav { width: 95%; padding: 10px; }
+        }
+    </style>
 </head>
 <body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Engineering</a>
+        <a href="#contact">Connect</a>
+    </nav>
+
     <header>
-        <h1 align="center">Jane Doe</h1>
-        <p align="center">Web Developer | Designer</p>
-        <nav align="center">
-            <a href="#about">About</a> | <a href="#projects">Projects</a> | <a href="#contact">Contact</a>
-        </nav>
+        <h1>Kumar Swarnim</h1>
+        <p class="subtitle">~/DevOps-Engineer/Cloud-Architect</p>
+        <p style="color: var(--text-dim); max-width: 500px;">
+            Computer Science Graduate '25 specializing in resilient CI/CD pipelines, 
+            Kubernetes orchestration, and Infrastructure as Code.
+        </p>
     </header>
-    <hr>
+
     <section id="about">
-        <h2>About Me</h2>
-        <p>Passionate developer specializing in clean, semantic HTML.</p>
+        <h2>01. About Me</h2>
+        <div class="glass-card">
+            <p>I build automated, scalable, and secure infrastructure. From deploying resilient AI agents using **Temporal** and **AWS Bedrock** to architecting high-performance **Magento 2** environments, I bridge the gap between development and operations.</p>
+            <br>
+            <p style="color: var(--accent-blue); font-family: 'Fira Code';">
+                Tech Stack: Kubernetes, Docker, AWS, Jenkins, Terraform, GitLab CI, Python.
+            </p>
+        </div>
     </section>
-    <hr>
+
     <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Project 1:</strong> Description here.</li>
-            <li><strong>Project 2:</strong> Description here.</li>
-        </ul>
+        <h2>02. Key Projects</h2>
+        <div class="project-grid">
+            <div class="glass-card">
+                <h3>DevSecOps Pipeline</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 10px;">
+                    Built a resilient pipeline for a full-stack blogging app using Jenkins, Docker, and Kubernetes on AWS.
+                </p>
+                <div style="margin-top: 15px;">
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">AWS</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3>Resilient AI Agent</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 10px;">
+                    Orchestrated task dispatching using Temporal and AWS Bedrock to interact with Docker engines.
+                </p>
+                <div style="margin-top: 15px;">
+                    <span class="tag">Temporal</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Docker</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3>Two-Tier Flask K8s</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 10px;">
+                    Deployed a high-availability Flask frontend with a MySQL backend on a managed K8s cluster.
+                </p>
+                <div style="margin-top: 15px;">
+                    <span class="tag">Flask</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">K8s</span>
+                </div>
+            </div>
+        </div>
     </section>
-    <hr>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:jane@example.com">jane@example.com</a></p>
+
+    <section id="contact" style="text-align: center;">
+        <h2>03. Deployment</h2>
+        <p style="margin-bottom: 30px; color: var(--text-dim);">Currently looking for DevOps/SRE opportunities where I can solve complex infrastructure challenges.</p>
+        <a href="mailto:your-email@example.com" class="contact-btn">Initiate Handshake (Email)</a>
     </section>
+
+    <footer>
+        <p>Built with ❤️ & GitOps | Kumar Swarnim &copy; 2026</p>
+    </footer>
+
 </body>
 </html>
