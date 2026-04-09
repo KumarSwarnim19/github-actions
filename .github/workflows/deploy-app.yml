@@ -4,9 +4,9 @@ on:
     workflow_dispatch:
 
 jobs:
-    environment:
-        DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
     deploy:
+        env:
+            DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
         runs-on: self-hosted
 
         steps:
