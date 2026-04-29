@@ -1,4 +1,4 @@
-# Uses trivy image scanner for CVEs- Docekr Image
+# Uses trivy image scanner for CVEs- Docker Image
 name: Image Scanner
 
 on:
@@ -15,7 +15,7 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_TOKEN}}
             
             - name: trivy Scanner
-              uses: aquasecurity/trivy-action@0.33.1
+              uses: aquasecurity/trivy-action@v0.36.0
               with:
                 severity: 'CRITICAL'
                 exit-code: '1'
